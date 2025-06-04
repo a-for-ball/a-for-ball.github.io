@@ -3,83 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Data Portfolio</title>
+    <title>Data Analytics Portfolio</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f8;
             color: #333;
             margin: 0;
             padding: 0;
         }
         header {
-            background-color: #004466;
+            background-color: #00334e;
             color: white;
-            padding: 20px;
+            padding: 30px 20px;
             text-align: center;
         }
-        .project {
-            padding: 30px;
-            border-bottom: 1px solid #ddd;
+        .intro, .project {
+            padding: 40px 60px;
+            max-width: 1000px;
+            margin: auto;
+            background-color: #fff;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
         }
         .project h2 {
             margin-top: 0;
-        }
-        .project img {
-            max-width: 100%;
-            height: auto;
-            border: 1px solid #ccc;
+            color: #00334e;
         }
         .project a {
             color: #007acc;
             text-decoration: none;
         }
+        .project a:hover {
+            text-decoration: underline;
+        }
         footer {
             background-color: #eee;
             text-align: center;
             padding: 15px;
+            margin-top: 40px;
+        }
+        .project img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            margin-top: 15px;
+        }
+        .image-row {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .image-row img {
+            width: 48%;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>My Data Analytics Portfolio</h1>
+        <h1>Data Analytics Portfolio</h1>
         <p>By Anansh Sinha</p>
     </header>
 
+    <div class="intro">
+        <p>Hello, I’m Anansh Sinha. I hold a degree in Statistics and Computer Science, the backbone of Data Analytics and Data Science. My journey with data began during college and evolved into a key element of my professional role.</p>
+        <p>Currently working as an Operations Executive, I focus on structuring, analyzing, and visualizing data to enable smarter, data-driven decisions across teams.</p>
+        <p>Below are selected projects that showcase my analytical skillset. Each project includes visualizations and a link to the GitHub repository for in-depth exploration.</p>
+    </div>
+
     <div class="project">
         <h2>1. Student Grade Prediction</h2>
-        <p>Built a machine learning model to predict final grades based on attendance, quiz scores, and project performance.</p>
+        <p>Used machine learning to forecast final grades based on attendance, quizzes, and project work.</p>
+        <p>This was a final-year academic project aimed at predicting grades of B.Sc. Computer Science, Statistics, and Mathematics students at Chandigarh University. The data was collected through in-person surveys and includes performance across multiple dimensions.</p>
+        <p><a href='https://github.com/a-for-ball/student-grade-prediction/blob/main/Final%20Project%20Report.pdf'>Read Full Report</a> detailing methodology, literature review, and outcomes.</p>
         <img src="media/student_dashboard.jpg" alt="Student Grade Dashboard">
-        <p>
-            <a href="https://github.com/a-for-ball/student-grade-prediction" target="_blank">GitHub Repository</a>
-        </p>
+        <p><a href="https://github.com/a-for-ball/student-grade-prediction" target="_blank">GitHub Repository</a></p>
     </div>
 
     <div class="project">
         <h2>2. Sales Success Prediction</h2>
-        <p>Analyzed sales performance data, built classification models, and visualized insights using Power BI and Python.</p>
-        <div style="display: flex;">
-            <img src="Assets\Sales Data\Sales Data_page-0001.jpg" alt="Sales Dashboard by Value" style="width: 50%; height: auto;">
-            <img src="Assets\Sales Data\Sales Data_page-0002.jpg" alt="Sales Dashboard by Count" style="width: 50%; height: auto;">
-        </div>
-        <p>
-            <a href="https://github.com/yourusername/sales-success-prediction" target="_blank">GitHub Repository</a>
+        <p>Performed end-to-end analysis of sales data using Python and Power BI to predict sales outcomes and uncover actionable business insights.</p>
+        <p><strong>ABC Pvt. Ltd.</strong> (name anonymized) offers a Dual Fuel System for diesel generators, which allows operation using both diesel and natural gas for better efficiency and compliance.</p>
+        <p>The focus area was NCR, where pollution-driven restrictions impact demand. This solution targeted industrial and commercial facilities seeking cleaner energy alternatives during high-pollution months.</p>
+        <ul>
+            <li>Seasonal trends impact sales volume (notably Q2).</li>
+            <li>Locations like Noida and Pune consistently outperform.</li>
+            <li>Sales success doesn't scale directly with kVA ratings—client profile and regulations play key roles.</li>
+        </ul>
+        <p><strong>Model Performance:</strong><br>
+            Among six models tested, the best achieved an ROC-AUC score of ~0.73. Feature importance analysis emphasized the role of 'Location', 'Client Type', and 'Rating per kVA' in driving conversions.
         </p>
+        <div class="image-row">
+            <img src="Assets/Sales Data/Sales Data_page-0001.jpg" alt="Sales Dashboard by Value">
+            <img src="Assets/Sales Data/Sales Data_page-0002.jpg" alt="Sales Dashboard by Count">
+        </div>
+        <p><a href="https://github.com/a-for-ball/sales-success-prediction" target="_blank">GitHub Repository</a></p>
     </div>
 
     <div class="project">
-        <h2>3. Falcon 9 Launch Analysis (IBM Capstone)</h2>
-        <p>Performed exploratory data analysis and created an interactive dashboard using Plotly Dash and predictive models.</p>
-        <img src="media/falcon9_dashboard.jpg" alt="Falcon 9 Dashboard">
-        <p>
-            <a href="https://github.com/a-for-ball/ibm-capstone-project-2025" target="_blank">GitHub Repository</a>
+        <h2>3. SpaceX Falcon 9 Launch Analysis & Prediction</h2>
+        <p>Analyzed SpaceX Falcon 9 missions using Python, Plotly Dash, and scikit-learn to explore launch behavior and predict landing outcomes.</p>
+        <ul>
+            <li>KSC LC-39A emerges as the most successful launch site.</li>
+            <li>Lower payloads are strongly associated with successful landings.</li>
+            <li>Orbits such as GEO, HEO, SSO, and ES-L1 achieved 100% success rates in the dataset.</li>
+            <li>Launch sites are strategically positioned near coastlines and close to the equator.</li>
+        </ul>
+        <p><strong>Predictive Modeling:</strong></p>
+        <ul>
+            <li>Trained Logistic Regression, SVM, Decision Tree, and KNN models.</li>
+            <li>Logistic Regression and SVM both achieved test accuracies of ~83%.</li>
+            <li>Cross-validation confirmed ~80% average accuracy, ensuring model reliability.</li>
+            <li>Confusion matrix highlights strong performance by Logistic Regression with very few false negatives.</li>
+        </ul>
+        <p><strong>Conclusion:</strong><br>
+            Landing outcome prediction is highly feasible using publicly available data. Launch cost estimation is also possible to a certain degree using features like orbit type and payload mass.
         </p>
+        <div class="image-row">
+            <img src="Assets/Falcon Launch/Total Success byLaunch Site.png" alt="Pie chart of success by launch site">
+            <img src="Assets/Falcon Launch/Confusion Matrix.png" alt="Confusion Matrix of logreg Model">
+        </div>
+        <p><a href="https://github.com/a-for-ball/ibm-capstone-project-2025/" target="_blank">GitHub Repository</a></p>
     </div>
 
-
     <footer>
-        <p>Connect with me on <a href="https://www.linkedin.com/in/anansh-sinha/" target="_blank">LinkedIn</a></p>
+        <p>&copy; 2025 Anansh Sinha. All rights reserved.</p>
     </footer>
 </body>
 </html>
