@@ -67,6 +67,18 @@
             display: block;
             margin-bottom: 8px;
         }
+        .image-row {
+            display: flex;
+            gap: 1rem;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .half-img {
+        flex: 1 1 48%;
+        height: auto;
+        border-radius: 8px;
+        object-fit: contain;
+        }
     </style>
 </head>
 <body>
@@ -76,7 +88,7 @@
     </header>
 
     <div class="intro">
-        <p>Hello, I’m Anansh Sinha. I hold a degree in Statistics and Computer Science, the backbone of Data Analytics and Data Science. My journey with data began during college and evolved into a key element of my professional role.</p>
+        <p>Hello, I’m Anansh Sinha. I have a Bachelor of Science degree in Statistics and Computer Science from Chandigarh University, the backbone of Data Analytics and Data Science. My journey with data began during college and evolved into a key element of my professional role.</p>
         <p>Currently I am working as an Operations Executive, where I focus on structuring, analyzing, and visualizing data to enable smarter, data-driven decisions across teams.</p>
         <p>Below are selected projects that showcase my analytical skillset. Each project includes visualizations and a link to the GitHub repository for in-depth exploration.</p>
 
@@ -92,25 +104,55 @@
 
     <div class="project">
         <h2>1. Sales Success Prediction</h2>
-        <p>Performed end-to-end analysis of sales data using Python and Power BI to predict sales outcomes and uncover actionable business insights.</p>
-        <p><strong>ABC Pvt. Ltd.</strong> (name anonymized) offers a Dual Fuel System for diesel generators, which allows operation using both diesel and natural gas for better efficiency and compliance.</p>
-        <p>The focus area was NCR, where pollution-driven restrictions impact demand. This solution targeted industrial and commercial facilities seeking cleaner energy alternatives during high-pollution months. For this region, three salespeople were assigned to cover the region. All three have similar levels of experience.</p>
-        <p>There are primarily three types of locations that would require this product - Residential Buildings, Industrial Complexes and Commercial Office Spaces.</p>
+        <p>Performed an end-to-end exploratory and predictive analysis of sales data using Python and Power BI, aimed at understanding key drivers of sales success and assisting decision-makers in refining marketing and outreach strategies.</p>
+
+        <p><strong>ABC Pvt. Ltd.</strong> (name anonymized) manufactures a <em>Dual Fuel System</em> (DFS) for diesel generators, designed to improve operational efficiency by enabling the use of both diesel and natural gas. The product is particularly relevant for regions with stringent emission norms, offering a cleaner and more compliant energy alternative.</p>
+
+        <p>The analysis centered on the Delhi NCR region, where pollution-triggered regulations (e.g., GRAP) significantly influence generator demand, especially during the high-pollution months. Sales operations were divided among three salespersons. While all shared comparable experience levels, differences in performance pointed to other influencing factors.</p>
+
+        <p>The client base was diverse, including:</p>
         <ul>
-            <li>Seasonal trends impact sales volume (notably just before GRAP restrictions are in place).</li>
-            <li>Locations like Noida and Faridabad consistently have a higher demand for compliance solutions for gensets, due to which these locations have better sales.</li>
-            <li>Sales success doesn't scale directly with kVA ratings; client profile and regulations play key roles.</li>
+            <li><strong>Residential Complexes</strong> – high-rises and apartment buildings</li>
+            <li><strong>Industrial Units</strong> – factories and manufacturing facilities</li>
+            <li><strong>Commercial Office Spaces</strong> – corporate buildings and commercial parks</li>
         </ul>
-        <p><strong>Model Performance:</strong><br>
-            Among six models tested, the best achieved an ROC-AUC score of ~0.73. Feature importance analysis emphasized the role of 'Location', 'Client Type', and 'Rating per kVA' in driving conversions.
-        </p>
+
+        <h4> Data Engineering & Feature Creation</h4>
+        <ul>
+            <li>Created derived features such as Amount per kVA, Is_Dealer, Is_Quarter_End, and Location_Amount_Ratio to capture domain-specific patterns.</li>
+            <li>Defined a custom ‘Success’ label by benchmarking sales amount against median value per kVA rating, improving the reliability of downstream modeling.</li>
+            <li>Cleaned categorical variables and resolved inconsistencies (e.g., duplicated or mislabelled locations such as “Noida” vs “GB Nagar”).</li>
+        </ul>
+
+        <h4> Key Business Insights</h4>
+        <ul>
+            <li>Sales saw seasonal spikes in the months preceding expected GRAP restrictions, particularly in October and March.</li>
+            <li>Locations like <strong>Noida</strong>, <strong>Faridabad</strong>, and <strong>South Delhi</strong> showed higher volume or value sales, pointing to a more regulation-aware or industry-heavy clientele.</li>
+            <li>Success was not linearly correlated with generator capacity (kVA), suggesting that compliance urgency and client type played a larger role in deal closures.</li>
+            <li>Dealers accounted for fewer sales but often had higher value transactions.</li>
+            <li>Salesmen A and B handled most of the high-value and successful transactions, while C saw more mid-value and inconsistent results—possibly due to lack of experience.</li>
+        </ul>
+
+        <h4> Model Performance</h4>
+        <p>Tested multiple classification models to predict sales success. Below are ROC-AUC results:</p>
+        <ul>
+            <li><strong>Gradient Boosting:</strong> 0.95 (Test), 0.74 (Cross-Validation)</li>
+            <li><strong>Random Forest:</strong> 0.90 (Test)</li>
+            <li><strong>Logistic Regression:</strong> 0.84 (Test), 0.75 (Cross-Validation)</li>
+        </ul>
+        <p>Gradient Boosting emerged as the best test performer. However, Logistic Regression offered consistent performance across folds, highlighting a balance of accuracy and generalization. Feature importance confirmed that <code>Location</code>, <code>Client Type</code>, and <code>Amount per kVA</code> were critical in predicting outcomes.</p>
+
         <div class="image-row">
             <img src="Assets/Sales Data/Sales Data_page-0001.jpg" alt="Sales Dashboard by Value">
             <img src="Assets/Sales Data/Sales Data_page-0002.jpg" alt="Sales Dashboard by Count">
         </div>
-        <p><a href="https://github.com/a-for-ball/sales-data-analysis" target="_blank">GitHub Repository</a></p>
-        <p><a href="https://github.com/a-for-ball/sales-data-analysis/blob/main/Sales%20Data.pdf" target="_blank">PowerBI Report</a></p>
+
+        <p>
+            <a href="https://github.com/a-for-ball/sales-data-analysis" target="_blank">GitHub Repository</a> |
+            <a href="https://github.com/a-for-ball/sales-data-analysis/blob/main/Sales%20Data.pdf" target="_blank">Power BI Report</a>
+        </p>
     </div>
+
 
     <div class="project">
         <h2>2. SpaceX Falcon 9 Launch Analysis & Prediction</h2>
@@ -140,11 +182,50 @@
 
     <div class="project">
         <h2>3. Student Grade Prediction</h2>
-        <p>Used machine learning to forecast final grades based on attendance, quizzes, and project work.</p>
-        <p>This was a final-year academic project aimed at predicting grades of B.Sc. Computer Science, Statistics, and Mathematics students at Chandigarh University. The data was collected through in-person surveys and includes performance across multiple dimensions.</p>
-        <p><a href='https://github.com/a-for-ball/student-grade-prediction/blob/main/Final%20Project%20Report.pdf'>Read Full Report</a> detailing methodology, literature review, and outcomes.</p>
-        <img src="Assets/Grade Prediction/Correlation Matrix.png" alt="Student Grade Dashboard">
-        <p><a href="https://github.com/a-for-ball/student-grade-prediction" target="_blank">GitHub Repository</a></p>
+        <p>Conducted an end-to-end analysis using Python and regression modeling to predict academic performance for B.Sc. students (Computer Science, Statistics, and Mathematics). The goal was to surface patterns that could guide early academic intervention and improve learning outcomes.</p>
+
+        <p>Data was collected anonymously from 51 students in Chandigarh University’s 5th semester, ensuring privacy and minimizing response bias. The study considered living situations, past educational background, attendance, and self-reported engagement levels to assess predictors of CGPA.</p>
+
+        <h4> Data Engineering & Feature Creation</h4>
+        <ul>
+            <li>Captured 14+ features including location, gender, education board, attendance, and focus scores (1–10 scale).</li>
+            <li>Applied Binary Encoding for categorical variables and introduced derived features like <code>Living Category</code> to capture lifestyle impact.</li>
+            <li>Eliminated low-correlation features (threshold: 0.12) to prevent noise and overfitting.</li>
+        </ul>
+
+        <h4> Key Insights</h4>
+        <ul>
+            <li><strong>Living Arrangement:</strong> Day Scholars had the highest CGPA, followed by Hostel/PG and then Flat residents.</li>
+            <li><strong>Board Impact:</strong> Students from State Boards outperformed ICSE and CBSE counterparts.</li>
+            <li><strong>Focus vs. Attendance:</strong> Focus scores were stronger predictors than raw attendance, indicating quality > quantity.</li>
+            <li><strong>Gender:</strong> No statistically significant difference in academic performance across genders.</li>
+        </ul>
+
+        <h4>Model Performance</h4>
+        <ul>
+            <li><strong>Lasso Regression (Best Performer):</strong> R² = 0.912, MAE = 0.093, RMSE = 0.112</li>
+            <li><strong>Gradient Boosting:</strong> R² = 0.777</li>
+            <li><strong>Random Forest:</strong> R² = 0.749</li>
+        </ul>
+        <p>Lasso’s regularization improved model interpretability and minimized multicollinearity, while still capturing over 91% variance. Cross-validation confirmed its robustness with low error margins.</p>
+
+        <h4>Applications</h4>
+        <ul>
+            <li><strong>Academic Risk Monitoring:</strong> Helps identify at-risk students by week 4.</li>
+            <li><strong>Targeted Support:</strong> Allows resource prioritization based on risk profiles (e.g., flat residents with low focus).</li>
+            <li><strong>Curriculum Adaptation:</strong> Insights on education board performance can guide teaching strategies.</li>
+            <li><strong>Engagement Design:</strong> Emphasizes the role of interactive learning over attendance mandates.</li>
+        </ul>
+
+        <div class="image-row">
+            <img src="Assets/Grade Prediction/Correlation Matrix_All.png" alt="Comprehensive correlation analysis between all variables" class="half-img" />
+            <img src="Assets/Grade Prediction/Model Performance.PNG" alt="Model Performance" class="half-img" />
+        </div>
+
+        <p>
+            <a href="https://github.com/a-for-ball/student-grade-prediction" target="_blank">GitHub Repository</a> |
+            <a href="https://github.com/a-for-ball/student-grade-prediction/blob/main/Final%20Project%20Report.pdf" target="_blank">Full Technical Report</a>
+        </p>
     </div>
 
     <footer>
